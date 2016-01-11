@@ -13,7 +13,7 @@ RUN apk add --update curl && \
   npm i hapi-auth-cookie && \
   bin/kibana plugin --install kibana-auth-plugin -u https://github.com/hmalphettes/kibana-auth-plugin/archive/master.tar.gz && \
   apk del curl && \
-  rm -rfv /var/cache/apk/* /tmp/* /var/tmp/* && /root/.npm
+  rm -rfv /var/cache/apk/* /tmp/* /var/tmp/* /root/.npm
 
 ENV LOCAL_AUTH_LOGINS=admin:password
 EXPOSE 5601
