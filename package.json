@@ -1,0 +1,44 @@
+{
+  "name": "kibana-auth-plugin",
+  "version": "0.1.0",
+  "description": "Homemade authentication for kibana",
+  "main": "gulpfile.js",
+  "homepage": "https://github.com/hmalphettes/kibana-auth-plugin",
+  "maintainers": [
+    {
+      "name": "Hugues Malphettes",
+      "email": "hmalphettes@gmail.com"
+    }
+  ],
+  "keywords": ["kibana" ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hmalphettes/kibana-auth-plugin.git"
+  },
+  "scripts": {
+    "start": "gulp dev",
+    "build": "gulp build",
+    "package": "gulp package",
+    "test": "gulp test"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.6",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-register": "^6.3.13",
+    "bluebird": "^3.1.1",
+    "eslint-plugin-mocha": "^1.1.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.1.1",
+    "gulp-gzip": "^1.2.0",
+    "gulp-tar": "^1.8.0",
+    "gulp-util": "^3.0.7",
+    "lodash": "^3.10.1",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.0",
+    "rsync": "^0.4.0"
+  },
+  "dependencies": {
+    "hapi-auth-cookie": "^5.0.0"
+  }
+}
