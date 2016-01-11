@@ -17,10 +17,10 @@
     "url": "git://github.com/hmalphettes/kibana-auth-plugin.git"
   },
   "scripts": {
-    "start": "gulp dev",
-    "build": "gulp build",
-    "package": "gulp package",
-    "test": "gulp test"
+    "start": "gulp --gulpfile __gulpfile.js dev",
+    "build": "gulp --gulpfile __gulpfile.js build",
+    "package": "gulp --gulpfile __gulpfile.js package",
+    "test": "gulp --gulpfile __gulpfile.js test"
   },
   "devDependencies": {
     "babel-eslint": "^4.1.6",
