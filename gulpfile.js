@@ -44,7 +44,6 @@ function syncPluginTo(dest, done) {
       var source = path.resolve(__dirname, name);
       return new Promise(function (resolve, reject) {
         var rsync = new Rsync();
-        console.log('source', source);
         rsync
           .source(source)
           .destination(dest)
