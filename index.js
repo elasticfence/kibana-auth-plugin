@@ -1,5 +1,5 @@
 module.exports = function (kibana) {
-  console.log('ahahah');
+
   return new kibana.Plugin({
     name: 'kibana-auth-plugin',
     require: ['kibana', 'elasticsearch'],
