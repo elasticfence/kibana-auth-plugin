@@ -13,6 +13,11 @@ npm i hapi-auth-cookie
 LOCAL_AUTH_LOGINS=admin:password,foo:bar bin/kibana
 ```
 
+Docker container
+```
+docker run --detach --name kibana -e LOCAL_AUTH_LOGINS=admin:password --net=host hmalphettes/kibana
+```
+
 Help wanted:
 
 - cleaner install
