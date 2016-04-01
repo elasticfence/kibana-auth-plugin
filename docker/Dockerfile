@@ -1,7 +1,7 @@
 FROM mhart/alpine-node
 MAINTAINER hmalphettes@gmail.com
 
-ENV KIBANA_VERSION 4.3.1
+ENV KIBANA_VERSION 4.5.0
 
 RUN apk add --update curl && \
   ( curl -Lskj https://download.elastic.co/kibana/kibana/kibana-${KIBANA_VERSION}-linux-x64.tar.gz | \
