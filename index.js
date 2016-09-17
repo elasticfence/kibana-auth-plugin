@@ -9,7 +9,7 @@ module.exports = function (kibana) {
         description: 'Homemade authentication for Kibana',
         main: 'plugins/kibana-auth-plugin/app'
       },
-      chromeNavControls: ['plugins/kibana-auth-plugin/public/logout']
+      chromeNavControls: ['plugins/kibana-auth-plugin/logout']
     },
 
     config: function (Joi) {
