@@ -39,7 +39,7 @@ module.exports = function (server) {
           + '<input type="text" name="username" placeholder="Username"><br>'
           + '<input type="password" name="password" placeholder="Password"><br/>'
 	  + '<div style="width:200px;margin-left:auto;margin-right:auto;">'
-          + '<input type="submit" value="Login">' 
+          + '<br><input type="submit" value="Login">' 
 	  + '</div></form></div></center></body></html>');
     }
     var uuid = 1;
