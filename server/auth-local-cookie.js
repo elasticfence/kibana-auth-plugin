@@ -46,13 +46,13 @@ module.exports = function (server) {
         reply(err);
       }
 
-      request.cookieAuth.set({ sid: sid });
+      request.auth.session.set({ sid: sid });
       return reply.redirect('/');
     });
   };
 
   const logout = function (request, reply) {
-    request.cookieAuth.clear();
+    request.auth.session.clear();
     return reply.redirect('/');
   };
 

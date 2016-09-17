@@ -8,7 +8,8 @@ module.exports = function (kibana) {
         title: 'Kibana Auth Plugin',
         description: 'Homemade authentication for Kibana',
         main: 'plugins/kibana-auth-plugin/app'
-      }
+      },
+      chromeNavControls: ['plugins/kibana-auth-plugin/public/logout']
     },
 
     config: function (Joi) {

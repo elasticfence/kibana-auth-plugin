@@ -1,6 +1,6 @@
 {
   "name": "kibana-auth-plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Homemade authentication for kibana",
   "main": "gulpfile.js",
   "homepage": "https://github.com/hmalphettes/kibana-auth-plugin",
@@ -8,6 +8,10 @@
     {
       "name": "Hugues Malphettes",
       "email": "hmalphettes@gmail.com"
+    },
+    {
+      "name": "Lorenzo Mangani",
+      "email": "lorenzo.mangani@gmail.com"
     }
   ],
   "keywords": ["kibana" ],
@@ -39,6 +43,6 @@
     "rsync": "^0.4.0"
   },
   "dependencies": {
-    "hapi-auth-cookie": "^5.0.0"
+    "hapi-auth-cookie": "^3.1.0"
   }
 }
