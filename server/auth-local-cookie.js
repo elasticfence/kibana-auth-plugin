@@ -32,7 +32,7 @@ module.exports = function (server) {
     }
     if (!checked) {
       return reply('<html><head><title>Login Required</title></head><body>'
-	  + '<center><div class="container" style="width: 20%;margin-left: auto;margin-right:auto;margin-top: 20%;">'
+	  + '<center><div class="container" style="width: 20%;margin-left: auto;margin-right:auto;margin-top: 10%;">'
 	  + '<h1><img ng-src="/plugins/kibana/settings/sections/about/barcode.svg" src="/plugins/kibana/settings/sections/about/barcode.svg"></h1>'
           + (message ? '<h3>' + message + '</h3><br/>' : '')
           + '<form method="get" action="/login">'
