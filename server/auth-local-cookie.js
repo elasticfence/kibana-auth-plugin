@@ -31,17 +31,22 @@ module.exports = function (server) {
       message = 'Missing username or password';
     }
     if (!checked) {
-      return reply('<html><head><title>Login Required</title></head><body>'
-	  + '<center><div class="container" style="width: 20%;margin-left: auto;margin-right:auto;margin-top: 10%;">'
-	  + '<h1><img ng-src="/plugins/kibana/settings/sections/about/barcode.svg" src="/plugins/kibana/settings/sections/about/barcode.svg"></h1>'
+      return reply('<!DOCTYPE html><html><head><title>Login Required</title>'
+          + '<link rel="stylesheet" href="/bundles/commons.style.css">'
+          + '<link rel="stylesheet" href="/bundles/kibana.style.css">'
+          + '</head><body>'
+          + '<center><div class="container" style="width: 20%;margin-left: auto;margin-right:auto;margin-top: 10%;">'
+          + '<h1><img width="60%" ng-src="/plugins/kibana/settings/sections/about/barcode.svg" src="/plugins/kibana/settings/sections/about/barcode.svg"></h1>'
           + (message ? '<h3>' + message + '</h3><br/>' : '')
-          + '<form method="get" action="/login">'
-          + '<input type="text" name="username" placeholder="Username"><br>'
-          + '<input type="password" name="password" placeholder="Password"><br/>'
-	  + '<div style="width:200px;margin-left:auto;margin-right:auto;">'
-          + '<br><input type="submit" value="Login">' 
-	  + '</div></form></div></center></body></html>');
+          + '<form id="login-form" class="ng-valid ng-dirty ng-valid-parse" method="get" action="/login">'
+          + '<div class="form-group inner-addon left-addon">'
+          + '  <input type="text" style="margin-bottom:8px;font-size: 1.25em;height: auto;" name="username" placeholder="Username" class="form-control ng-valid ng-touched ng-dirty">'
+          + '  <input type="password" style="font-size: 1.25em;height: auto;" name="password" placeholder="Password" class="form-control ng-valid ng-touched ng-dirty">'
+          + '</div><div style="width:200px;margin-left:auto;margin-right:auto;">'
+          + '<input type="submit" value="Login" class="btn btn-default login" style="width: 80%;font-size: 1.5em;">' 
+          + '</div></form></div></center></body></html>');
     }
+
     var uuid = 1;
     const sid = String(++uuid);
     request.server.app.cache.set(sid, { username: username }, 0, (err) => {
