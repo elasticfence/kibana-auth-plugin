@@ -6,10 +6,12 @@ Please use Elastics's Shield for a supported product.
 
 Or wait for progress to land in Kibana: https://github.com/elastic/kibana/issues/3904
 
+<img src="https://cloud.githubusercontent.com/assets/1423657/18619991/c47b632e-7e09-11e6-9eff-7b8324ad04c6.png"/>
+
 Usage:
 ```
 bin/kibana plugin --install kibana-auth-plugin -u https://github.com/hmalphettes/kibana-auth-plugin/archive/master.tar.gz
-npm i hapi-auth-cookie
+npm i hapi-auth-cookie@3.0.1
 LOCAL_AUTH_LOGINS=admin:password,foo:bar bin/kibana
 ```
 

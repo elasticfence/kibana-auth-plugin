@@ -4,11 +4,7 @@ module.exports = function (kibana) {
     name: 'kibana-auth-plugin',
     require: ['kibana', 'elasticsearch'],
     uiExports: {
-      app: {
-        title: 'Kibana Auth Plugin',
-        description: 'Homemade authentication for Kibana',
-        main: 'plugins/kibana-auth-plugin/app'
-      }
+      chromeNavControls: ['plugins/kibana-auth-plugin/logout/logout']
     },
 
     config: function (Joi) {
