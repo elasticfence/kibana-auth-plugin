@@ -10,8 +10,8 @@ Or wait for progress to land in Kibana: https://github.com/elastic/kibana/issues
 
 Usage:
 ```
-bin/kibana plugin --install kibana-auth-plugin -u https://github.com/hmalphettes/kibana-auth-plugin/archive/master.tar.gz
-npm i hapi-auth-cookie@3.0.1
+bin/kibana plugin --install kibana-auth-plugin -u https://github.com/elasticfence/kibana-auth-plugin/releases/download/0.1.1/kauth-latest.tar.gz
+
 LOCAL_AUTH_LOGINS=admin:password,foo:bar bin/kibana
 ```
 
