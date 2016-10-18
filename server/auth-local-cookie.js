@@ -10,7 +10,7 @@ module.exports = function (server) {
   const login = function (request, reply) {
 
     if (request.auth.isAuthenticated) {
-      return reply.redirect('/');
+		      return reply.continue();
     } 
   
     var message;
@@ -75,7 +75,9 @@ module.exports = function (server) {
 		      }
 
 		      request.auth.session.set({ sid: sid });
-		      return reply.redirect('/');
+		      // var auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
+		      return reply.redirect("/");
+
 		    });
 
             } else { 
