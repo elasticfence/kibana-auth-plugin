@@ -3,7 +3,7 @@ var crypto = require('crypto');
 module.exports = function (server) {
   
   const encode = function(pwd) {
-    var hash = crypto.createHash('sha256').update(pwd).digest('base64');
+    var hash = crypto.createHash('sha256').update(pwd).digest('hex');
     return hash;
   };
   
