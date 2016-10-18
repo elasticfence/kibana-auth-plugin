@@ -1,6 +1,6 @@
 {
   "name": "kibana-auth-plugin",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Homemade authentication for kibana",
   "main": "gulpfile.js",
   "homepage": "https://github.com/hmalphettes/kibana-auth-plugin",
@@ -44,6 +44,7 @@
     "rsync": "^0.4.0"
   },
   "dependencies": {
-    "hapi-auth-cookie": "^3.1.0"
+    "hapi-auth-cookie": "^3.1.0",
+    "crypto": "*"
   }
 }
