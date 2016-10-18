@@ -7,8 +7,20 @@ module.exports = function (server) {
     return hash;
   };
   
-  const loginForm = function(reply) {
-       return reply('<!DOCTYPE html><html><head><title>Login Required</title>'
+  const login = function (request, reply) {
+
+    if (request.auth.isAuthenticated) {
+      return reply.redirect('/');
+    } 
+  
+    var message;
+    var username;
+    var password;
+    var checked = false;
+    var processing = true;
+
+    var loginForm = function(reply){
+      return reply('<!DOCTYPE html><html><head><title>Login Required</title>'
           + '<link rel="stylesheet" href="/bundles/commons.style.css">'
           + '<link rel="stylesheet" href="/bundles/kibana.style.css">'
           + '</head><body>'
@@ -21,18 +33,8 @@ module.exports = function (server) {
           + '  <input type="password" style="font-size: 1.25em;height: auto;" name="password" placeholder="Password" class="form-control ng-valid ng-touched ng-dirty">'
           + '</div><div style="width:200px;margin-left:auto;margin-right:auto;">'
           + '<input type="submit" value="Login" class="btn btn-default login" style="width: 80%;font-size: 1.5em;">' 
-          + '</div></form></div></center></body></html>'); 
-  }
-  
-  const login = function (request, reply) {
-
-    if (request.auth.isAuthenticated) {
-      return reply.redirect('/');
+          + '</div></form></div></center></body></html>');
     }
-
-    var message;
-    var username;
-    var password;
 
     if (request.method === 'post') {
       username = request.payload.username;
@@ -41,12 +43,14 @@ module.exports = function (server) {
       username = request.query.username;
       password = request.query.password;
     }
-    
-    if (username || password) {
+
+    if (!username && !password) { processing = false; }
+    if (username || password){
       var encPass = encode(password);
       var client = server.plugins.elasticsearch.client;
       var callWithRequest = server.plugins.elasticsearch.callWithRequest;
-      callWithRequest('search', {
+      //callWithRequest(request, 'search', {
+      client.search({
           index:".http_user_auth",
           allowNoIndices: false,
           body: {
@@ -60,36 +64,40 @@ module.exports = function (server) {
        })
        .then(
           function (res) {
-            if (res.hits.hits[0] && res.hits.hits[0].password == encPass) {
-                var uuid = 1;
-                const sid = String(++uuid);
-                request.server.app.cache.set(sid, { username: username }, 0, (err) => {
+            if (res.hits.hits[0] && res.hits.hits[0]._source.password == encPass) {
+		    var checked = true;
+		    var uuid = 1;
+		    const sid = String(++uuid);
+		    request.server.app.cache.set(sid, { username: username }, 0, (err) => {
 
-                  if (err) {
-                    reply(err);
-                  }
+		      if (err) {
+		        reply(err);
+		      }
 
-                  request.auth.session.set({ sid: sid });
-                  return reply.redirect('/');
-                });
+		      request.auth.session.set({ sid: sid });
+		      return reply.redirect('/');
+		    });
+
             } else { 
-                checked = false; 
                 message = 'Invalid username or password';
-                loginForm(reply);
+        	loginForm(reply);
             }
           },
           function (error) {
             var checked = false;
             message = 'Invalid username or password';
-            loginForm(reply);
+	    loginForm(reply);
           }
        );
       
     } else if (request.method === 'post') {
+	var processing = false;
         message = 'Missing username or password';
-        loginForm(reply);
     }
 
+    if (!checked && !processing) {
+	loginForm(reply);
+    }
   };
 
   const logout = function (request, reply) {
