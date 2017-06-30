@@ -14,6 +14,7 @@ module.exports = function (server) {
     var message;
     var username;
     var password;
+    var salt = "RJMIgyv5P8gxiylnd7z5vrHj3a91ILBe";
 
     if (request.method === 'post') {
       username = request.payload.username;
@@ -75,7 +76,7 @@ module.exports = function (server) {
     server.app.cache = cache;
 
     server.auth.strategy('session', 'cookie', true, {
-      password: 'secret',
+      password: 'secret' + salt,
       cookie: 'sid',
       redirectTo: '/login',
       isSecure: false,
